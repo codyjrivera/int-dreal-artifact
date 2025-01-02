@@ -1,0 +1,111 @@
+load("//third_party/com_github_robotlocomotion_drake:tools/workspace/cpplint.bzl", "cpplint")
+load(
+    "//tools:dreal.bzl",
+    "dreal_cc_binary",
+    "dreal_cc_library",
+)
+
+package(default_visibility = ["//visibility:private"])
+
+dreal_cc_library(
+    name = "control",
+    srcs = [
+        "control.cc",
+    ],
+    hdrs = [
+        "control.h",
+    ],
+    deps = [
+        "//dreal/api",
+        "//dreal/solver",
+        "//dreal/util:assert",
+    ],
+)
+
+dreal_cc_binary(
+    name = "verify_nn",
+    srcs = [
+        "verify_nn.cc",
+    ],
+    deps = [
+        "//dreal/api",
+        "//dreal/solver",
+        "//dreal/util:assert",
+    ],
+)
+
+dreal_cc_binary(
+    name = "check_lyapunov",
+    srcs = [
+        "check_lyapunov.cc",
+    ],
+    deps = [
+        ":control",
+    ],
+)
+
+dreal_cc_binary(
+    name = "synthesize_lyapunov_simple",
+    srcs = [
+        "synthesize_lyapunov_simple.cc",
+    ],
+    deps = [
+        ":control",
+    ],
+)
+
+dreal_cc_binary(
+    name = "synthesize_lyapunov_normalized_pendulum",
+    srcs = [
+        "synthesize_lyapunov_normalized_pendulum.cc",
+    ],
+    deps = [
+        ":control",
+    ],
+)
+
+dreal_cc_binary(
+    name = "synthesize_lyapunov_damped_mathieu",
+    srcs = [
+        "synthesize_lyapunov_damped_mathieu.cc",
+    ],
+    deps = [
+        ":control",
+    ],
+)
+
+dreal_cc_binary(
+    name = "synthesize_lyapunov_moore_greitzer",
+    srcs = [
+        "synthesize_lyapunov_moore_greitzer.cc",
+    ],
+    deps = [
+        ":control",
+    ],
+)
+
+dreal_cc_binary(
+    name = "synthesize_lyapunov_power_train",
+    srcs = [
+        "synthesize_lyapunov_power_train.cc",
+    ],
+    deps = [
+        ":control",
+    ],
+)
+
+dreal_cc_binary(
+    name = "program_synthesis_abs",
+    srcs = [
+        "program_synthesis_abs.cc",
+    ],
+    deps = [
+        "//dreal/api",
+    ],
+)
+
+cpplint()
+
+licenses(["notice"])  # Apache 2.0
+
+exports_files(["LICENSE"])

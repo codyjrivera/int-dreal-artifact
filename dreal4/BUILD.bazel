@@ -1,0 +1,174 @@
+load("@rules_pkg//:pkg.bzl", "pkg_deb", "pkg_tar")
+load("//tools:dreal.bzl", "DREAL_PREFIX", "DREAL_VERSION", "dreal_cc_library")
+load("//third_party/com_github_grailbio_bazel-compilation-database:aspects.bzl", "compilation_database")
+
+package(
+    default_visibility = ["//visibility:private"],
+)
+
+exports_files([
+    "CPPLINT.cfg",
+    ".clang-format",
+])
+
+compilation_database(
+    name = "compdb",
+    exec_root = "bazel-dreal4",
+    targets = [
+        ":dreal",
+        ":dreal_static_library",
+    ],
+)
+
+# cc_binary(
+#     name = "libdreal_.a",
+#     linkstatic = 1,
+#     visibility = [
+#         "//dreal:__subpackages__",
+#     ],
+#     deps = [
+#         "//dreal/api",
+#         "//dreal/solver",
+#         "//dreal/symbolic",
+#         "//dreal/symbolic:prefix_printer",
+#         "//dreal/util:box",
+#         "//dreal/util:interrupt",
+#         "//dreal/util:logging",
+#     ],
+# )
+
+cc_library(
+    name = "dreal_static_library",
+    # srcs = [":libdreal_.a"],
+    linkstatic = 1,
+    srcs = [
+        "//dreal/api",
+        "//dreal/solver",
+        "//dreal/symbolic",
+        "//dreal/symbolic:prefix_printer",
+        "//dreal/util:box",
+        "//dreal/util:interrupt",
+        "//dreal/util:logging",
+    ],
+    hdrs = [
+        "//dreal:headers",
+        "//dreal/api:headers",
+        "//dreal/smt2:headers",
+        "//dreal/solver:headers",
+        "//dreal/symbolic:headers",
+        "//dreal/util:headers",
+        "//dreal/util:private_headers",
+    ],
+    includes = [
+        "third_party/com_github_pinam45_dynamic_bitset",
+        "third_party/com_github_robotlocomotion_drake",
+        "third_party/com_github_tartanllama_optional",
+    ],
+    visibility = [
+        "//dreal:__subpackages__",
+    ],
+    deps = [
+        "//dreal/util:signal_handler_guard",
+        "@fmt",
+        "@ibex",
+        "@spdlog",
+    ],
+)
+
+genrule(
+    name = "generate_pkg_file",
+    outs = [
+        "dreal.pc",
+    ],
+    cmd =
+        select({
+            "@//tools:linux": "$(location //tools:generate_pkg_file_ubuntu) %s %s> $@" % (DREAL_VERSION, DREAL_PREFIX),
+            "@//conditions:default": "$(location //tools:generate_pkg_file_osx) %s > $@" % DREAL_VERSION,
+        }),
+    tools = [
+        "//tools:generate_pkg_file_osx",
+        "//tools:generate_pkg_file_ubuntu",
+    ],
+)
+
+pkg_tar(
+    name = "package_pkg_file",
+    srcs = ["dreal.pc"],
+    extension = "tar.gz",
+    package_dir = "lib/pkgconfig",
+    tags = ["manual"],
+)
+
+pkg_tar(
+    name = "package_license_file",
+    srcs = ["LICENSE"],
+    extension = "tar.gz",
+    package_dir = "share/doc/dreal",
+    tags = ["manual"],
+)
+
+pkg_tar(
+    name = "archive",
+    extension = "tar.gz",
+    package_dir = DREAL_PREFIX,
+    tags = ["manual"],
+    deps = [
+        ":package_license_file",
+        ":package_pkg_file",
+        "//dreal:package_bin",
+        "//dreal:package_headers",
+        "//dreal:package_staticlib",
+        "//dreal/api:package_headers",
+        "//dreal/smt2:package_headers",
+        "//dreal/solver:package_headers",
+        "//dreal/symbolic:package_headers",
+        "//dreal/util:package_headers",
+    ],
+)
+
+pkg_deb(
+    name = "package_debian",
+    architecture = "amd64",
+    built_using = "bazel (3.4.1)",
+    data = ":archive",
+    depends = [
+        "coinor-libclp-dev",
+        "libbz2-dev",
+        "libgmp10",
+        "libgmpxx4ldbl",
+        "libibex-dev",
+        "libnlopt-dev",
+        # The followings are Build-Depends:
+        # "bison",
+        # "flex",
+        # "pkg-config",
+        # "libgmp-dev",
+    ],
+    description = "SMT solver for nonlinear theories",
+    homepage = "http://dreal.github.io",
+    maintainer = "Soonho Kong <soonho.kong@gmail.com>",
+    package = "dreal",
+    tags = ["manual"],
+    version = DREAL_VERSION,
+)
+
+# External users need to include only this target and `dreal/dreal.h` header.
+dreal_cc_library(
+    name = "dreal",
+    srcs = [],
+    hdrs = [
+        "//dreal:headers",
+    ],
+    visibility = [
+        "//visibility:public",
+    ],
+    deps = [
+        "//dreal/api",
+        "//dreal/solver",
+        "//dreal/util:box",
+    ],
+)
+
+licenses(["notice"])  # Apache 2.0
+
+exports_files(["LICENSE"])

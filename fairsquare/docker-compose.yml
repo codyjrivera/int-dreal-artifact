@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    environment:
+      TEST: test
+    volumes:
+      - .:/usr/fairsquare

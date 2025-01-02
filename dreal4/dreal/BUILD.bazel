@@ -1,0 +1,121 @@
+load("//third_party/com_github_robotlocomotion_drake:tools/workspace/cpplint.bzl", "cpplint")
+load("//third_party/com_github_robotlocomotion_drake:tools/workspace/python_lint.bzl", "python_lint")
+load(
+    "//tools:dreal.bzl",
+    "DREAL_VERSION",
+    "dreal_cc_binary",
+    "dreal_cc_library",
+    "dreal_pybind_library",
+)
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+package(default_visibility = ["//visibility:private"])
+
+genrule(
+    name = "generate_version_header",
+    outs = [
+        "version.h",
+    ],
+    cmd = "$(location //tools:generate_version_header) %s > $@" % DREAL_VERSION,
+    tools = [
+        "//tools:generate_version_header",
+    ],
+)
+
+dreal_cc_library(
+    name = "version_header",
+    hdrs = [
+        "version.h",
+    ],
+    visibility = [":__subpackages__"],
+)
+
+dreal_cc_binary(
+    name = "dreal",
+    srcs = [
+        "dreal_main.cc",
+        "dreal_main.h",
+    ],
+    visibility = [
+        "//dreal/test/dr:__subpackages__",
+        "//dreal/test/smt2:__subpackages__",
+    ],
+    deps = [
+        "//dreal/dr",
+        "//dreal/smt2",
+        "//dreal/solver:config",
+        "//dreal/util:filesystem",
+        "//dreal/util:logging",
+        "@ezoptionparser",
+        "@fmt",
+    ],
+)
+
+# ----------------------
+# Bindings
+# ----------------------
+# dreal_pybind_library(
+#     name = "dreal_py",
+#     cc_srcs = ["dreal_py.cc"],
+#     py_srcs = ["__init__.py"],
+# )
+
+# # To test ODR (one definition rule).
+# dreal_pybind_library(
+#     name = "odr_test_module_py",
+#     cc_srcs = ["odr_test_module_py.cc"],
+# )
+
+# ----------------------
+# Header files to expose
+# ----------------------
+filegroup(
+    name = "headers",
+    srcs = [
+        "dreal.h",
+        "version.h",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+pkg_tar(
+    name = "package_headers",
+    srcs = [
+        ":headers",
+    ],
+    extension = "tar.gz",
+    package_dir = "include/dreal",
+    tags = ["manual"],
+    visibility = ["//:__pkg__"],
+)
+
+pkg_tar(
+    name = "package_bin",
+    srcs = [
+        ":dreal",
+    ],
+    extension = "tar.gz",
+    mode = "0755",
+    package_dir = "bin",
+    tags = ["manual"],
+    visibility = ["//:__pkg__"],
+)
+
+pkg_tar(
+    name = "package_sharedlib",
+    srcs = [
+        "//:libdreal_.so",
+    ],
+    extension = "tar.gz",
+    package_dir = "lib",
+    tags = ["manual"],
+    visibility = ["//:__pkg__"],
+)
+
+cpplint()
+
+python_lint()
+
+licenses(["notice"])  # Apache 2.0
+
+exports_files(["LICENSE"])

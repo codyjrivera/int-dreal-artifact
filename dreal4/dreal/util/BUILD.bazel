@@ -1,0 +1,586 @@
+load("//third_party/com_github_robotlocomotion_drake:tools/workspace/cpplint.bzl", "cpplint")
+load("//third_party/com_github_robotlocomotion_drake:tools/workspace/python_lint.bzl", "python_lint")
+load(
+    "//tools:dreal.bzl",
+    "dreal_cc_googletest",
+    "dreal_cc_library",
+)
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+package(default_visibility = ["//visibility:private"])
+
+# ---------
+# Libraries
+# ---------
+dreal_cc_library(
+    name = "assert",
+    hdrs = [
+        "assert.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+)
+
+dreal_cc_library(
+    name = "box",
+    srcs = [
+        "box.cc",
+    ],
+    hdrs = [
+        "box.h",
+    ],
+    visibility = [
+        "//:__pkg__",
+        "//dreal:__subpackages__",
+    ],
+    deps = [
+        ":assert",
+        ":exception",
+        ":logging",
+        ":math",
+        ":precision_guard",
+        "//dreal/symbolic",
+        "@ibex",
+    ],
+)
+
+dreal_cc_library(
+    name = "cds",
+    hdrs = [
+        "cds.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+    deps = [
+        "@cds",
+    ],
+)
+
+dreal_cc_library(
+    name = "interval",
+    srcs = [
+        "interval.cc",
+    ],
+    hdrs = [
+        "interval.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+    deps = [
+        ":box",
+    ],
+)
+
+dreal_cc_library(
+    name = "if_then_else_eliminator",
+    srcs = [
+        "if_then_else_eliminator.cc",
+    ],
+    hdrs = [
+        "if_then_else_eliminator.h",
+    ],
+    visibility = ["//dreal/solver:__pkg__"],
+    deps = [
+        ":nnfizer",
+        ":stat",
+        ":timer",
+        "//dreal/symbolic",
+        "//dreal/util:logging",
+    ],
+)
+
+dreal_cc_library(
+    name = "interrupt",
+    srcs = [
+        "interrupt.cc",
+    ],
+    hdrs = [
+        "interrupt.h",
+    ],
+    visibility = ["//:__subpackages__"],
+)
+
+dreal_cc_library(
+    name = "optional",
+    hdrs = [
+        "optional.h",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//third_party/com_github_tartanllama_optional:optional",
+    ],
+)
+
+dreal_cc_library(
+    name = "dynamic_bitset",
+    hdrs = [
+        "dynamic_bitset.h",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//third_party/com_github_pinam45_dynamic_bitset:dynamic_bitset",
+    ],
+)
+
+dreal_cc_library(
+    name = "precision_guard",
+    srcs = [
+        "precision_guard.cc",
+    ],
+    hdrs = [
+        "precision_guard.h",
+    ],
+    visibility = [
+        "//dreal:__subpackages__",
+    ],
+)
+
+dreal_cc_library(
+    name = "signal_handler_guard",
+    srcs = [
+        "signal_handler_guard.cc",
+    ],
+    hdrs = [
+        "signal_handler_guard.h",
+    ],
+    visibility = ["//:__subpackages__"],
+)
+
+dreal_cc_library(
+    name = "stat",
+    hdrs = [
+        "stat.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+)
+
+dreal_cc_library(
+    name = "timer",
+    srcs = [
+        "timer.cc",
+    ],
+    hdrs = [
+        "timer.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+)
+
+dreal_cc_library(
+    name = "tseitin_cnfizer",
+    srcs = [
+        "tseitin_cnfizer.cc",
+    ],
+    hdrs = [
+        "tseitin_cnfizer.h",
+    ],
+    visibility = ["//dreal/solver:__pkg__"],
+    deps = [
+        ":assert",
+        ":exception",
+        ":logging",
+        ":naive_cnfizer",
+        ":stat",
+        ":timer",
+        "//dreal/symbolic",
+    ],
+)
+
+dreal_cc_library(
+    name = "naive_cnfizer",
+    srcs = [
+        "naive_cnfizer.cc",
+    ],
+    hdrs = [
+        "naive_cnfizer.h",
+    ],
+    visibility = ["//dreal/solver:__pkg__"],
+    deps = [
+        ":assert",
+        ":exception",
+        ":nnfizer",
+        "//dreal/symbolic",
+    ],
+)
+
+dreal_cc_library(
+    name = "exception",
+    hdrs = [
+        "exception.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+    deps = [
+        "@fmt",
+    ],
+)
+
+dreal_cc_library(
+    name = "filesystem",
+    srcs = [
+        "filesystem.cc",
+    ],
+    hdrs = [
+        "filesystem.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+)
+
+dreal_cc_library(
+    name = "ibex_converter",
+    srcs = [
+        "ibex_converter.cc",
+    ],
+    hdrs = [
+        "ibex_converter.h",
+    ],
+    visibility = [
+        "//dreal/contractor:__pkg__",
+        "//dreal/solver:__pkg__",
+    ],
+    deps = [
+        ":box",
+        ":exception",
+        ":interval",
+        ":logging",
+        ":math",
+        ":stat",
+        ":timer",
+        "//dreal/symbolic",
+        "@ibex",
+    ],
+)
+
+dreal_cc_library(
+    name = "logging",
+    srcs = [
+        "logging.cc",
+    ],
+    hdrs = [
+        "logging.h",
+    ],
+    visibility = [
+        "//:__pkg__",
+        "//dreal:__subpackages__",
+    ],
+    deps = [
+        "@spdlog",
+    ],
+)
+
+dreal_cc_library(
+    name = "math",
+    srcs = [
+        "math.cc",
+    ],
+    hdrs = [
+        "math.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+    deps = [
+        ":exception",
+    ],
+)
+
+dreal_cc_library(
+    name = "nnfizer",
+    srcs = [
+        "nnfizer.cc",
+    ],
+    hdrs = [
+        "nnfizer.h",
+    ],
+    visibility = [
+        "//dreal/contractor:__pkg__",
+        "//dreal/optimization:__pkg__",
+        "//dreal/solver:__pkg__",
+    ],
+    deps = [
+        "//dreal/symbolic",
+    ],
+)
+
+dreal_cc_library(
+    name = "option_value",
+    hdrs = [
+        "option_value.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+    deps = [
+        "//dreal/symbolic",
+    ],
+)
+
+dreal_cc_library(
+    name = "predicate_abstractor",
+    srcs = [
+        "predicate_abstractor.cc",
+    ],
+    hdrs = [
+        "predicate_abstractor.h",
+    ],
+    visibility = ["//dreal/solver:__pkg__"],
+    deps = [
+        ":stat",
+        ":timer",
+        "//dreal/symbolic",
+    ],
+)
+
+dreal_cc_library(
+    name = "profiler",
+    srcs = [
+        "profiler.cc",
+    ],
+    hdrs = [
+        "profiler.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+)
+
+dreal_cc_library(
+    name = "rounding_mode_guard",
+    hdrs = [
+        "rounding_mode_guard.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+)
+
+dreal_cc_library(
+    name = "scoped_unordered_map",
+    hdrs = [
+        "scoped_unordered_map.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+    deps = [
+        ":assert",
+        ":exception",
+    ],
+)
+
+dreal_cc_library(
+    name = "scoped_unordered_set",
+    hdrs = [
+        "scoped_unordered_set.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+    deps = [
+        ":assert",
+        ":exception",
+    ],
+)
+
+dreal_cc_library(
+    name = "scoped_vector",
+    hdrs = [
+        "scoped_vector.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+    deps = [
+        ":assert",
+        ":exception",
+    ],
+)
+
+dreal_cc_library(
+    name = "string_to_interval",
+    srcs = [
+        "string_to_interval.cc",
+    ],
+    hdrs = [
+        "string_to_interval.h",
+    ],
+    visibility = ["//dreal:__subpackages__"],
+    deps = [
+        ":rounding_mode_guard",
+        "//dreal/util:box",
+    ],
+)
+
+# -----
+# Tests
+# -----
+# dreal_cc_googletest(
+#     name = "box_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":box",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "cds_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":box",
+#         ":cds",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "filesystem_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":filesystem",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "interval_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":interval",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "if_then_else_eliminator_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":if_then_else_eliminator",
+#         "//dreal/api",
+#         "//dreal/symbolic:symbolic_test_util",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "logging_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":logging",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "math_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":math",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "nnfizer_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":nnfizer",
+#         "//dreal/symbolic:symbolic_test_util",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "option_value_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":option_value",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "predicate_abstractor_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":predicate_abstractor",
+#         "//dreal/symbolic:symbolic_test_util",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "precision_guard_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":precision_guard",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "scoped_unordered_map_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":scoped_unordered_map",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "scoped_unordered_set_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":scoped_unordered_set",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "scoped_vector_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":scoped_vector",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "string_to_interval_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":string_to_interval",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "tseitin_cnfizer_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":tseitin_cnfizer",
+#         "//dreal/symbolic:symbolic_test_util",
+#     ],
+# )
+
+# dreal_cc_googletest(
+#     name = "timer_test",
+#     tags = ["unit"],
+#     deps = [
+#         ":timer",
+#     ],
+# )
+
+# ----------------------
+# Header files to expose
+# ----------------------
+filegroup(
+    name = "headers",
+    srcs = [
+        "assert.h",
+        "box.h",
+        "dynamic_bitset.h",
+        "if_then_else_eliminator.h",
+        "option_value.h",
+        "optional.h",
+        "scoped_vector.h",
+        "//third_party/com_github_pinam45_dynamic_bitset:headers",
+        "//third_party/com_github_tartanllama_optional:headers",
+    ],
+    visibility = ["//:__pkg__"],
+)
+
+filegroup(
+    name = "private_headers",
+    srcs = [
+        "interrupt.h",
+        "logging.h",
+        "signal_handler_guard.h",
+    ],
+    visibility = ["//:__pkg__"],
+)
+
+pkg_tar(
+    name = "package_headers",
+    srcs = [
+        ":headers",
+    ],
+    extension = "tar.gz",
+    package_dir = "include/dreal/util",
+    tags = ["manual"],
+    visibility = ["//:__pkg__"],
+)
+
+cpplint()
+
+python_lint()
+
+licenses(["notice"])  # Apache 2.0
+
+exports_files(["LICENSE"])

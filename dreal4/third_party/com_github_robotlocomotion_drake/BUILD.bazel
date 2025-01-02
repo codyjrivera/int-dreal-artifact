@@ -1,0 +1,98 @@
+licenses(["notice"])
+
+# Headers to expose.
+filegroup(
+    name = "headers",
+    srcs = [
+        "dreal/symbolic/hash.h",
+        "dreal/symbolic/symbolic_environment.h",
+        "dreal/symbolic/symbolic_expression.h",
+        "dreal/symbolic/symbolic_expression_visitor.h",
+        "dreal/symbolic/symbolic_formula.h",
+        "dreal/symbolic/symbolic_formula_visitor.h",
+        "dreal/symbolic/symbolic_variable.h",
+        "dreal/symbolic/symbolic_variables.h",
+        "dreal/symbolic/test/symbolic_test_util.h",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "drake_symbolic",
+    srcs = [
+        "dreal/symbolic/never_destroyed.h",
+        "dreal/symbolic/symbolic_environment.cc",
+        "dreal/symbolic/symbolic_expression.cc",
+        "dreal/symbolic/symbolic_expression_cell.cc",
+        "dreal/symbolic/symbolic_expression_cell.h",
+        "dreal/symbolic/symbolic_expression_visitor.cc",
+        "dreal/symbolic/symbolic_formula.cc",
+        "dreal/symbolic/symbolic_formula_cell.cc",
+        "dreal/symbolic/symbolic_formula_cell.h",
+        "dreal/symbolic/symbolic_formula_visitor.cc",
+        "dreal/symbolic/symbolic_variable.cc",
+        "dreal/symbolic/symbolic_variables.cc",
+    ],
+    hdrs = [
+        ":headers",
+    ],
+    includes = ["."],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@fmt",
+    ],
+)
+
+cc_test(
+    name = "symbolic_expression_test",
+    srcs = ["dreal/symbolic/test/symbolic_expression_test.cc"],
+    deps = [
+        ":drake_symbolic",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "symbolic_substitution_test",
+    srcs = ["dreal/symbolic/test/symbolic_substitution_test.cc"],
+    deps = [
+        ":drake_symbolic",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "symbolic_variable_test",
+    srcs = ["dreal/symbolic/test/symbolic_variable_test.cc"],
+    deps = [
+        ":drake_symbolic",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "symbolic_variables_test",
+    srcs = ["dreal/symbolic/test/symbolic_variables_test.cc"],
+    deps = [
+        ":drake_symbolic",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "symbolic_environment_test",
+    srcs = ["dreal/symbolic/test/symbolic_environment_test.cc"],
+    deps = [
+        ":drake_symbolic",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "symbolic_formula_test",
+    srcs = ["dreal/symbolic/test/symbolic_formula_test.cc"],
+    deps = [
+        ":drake_symbolic",
+        "@com_google_googletest//:gtest_main",
+    ],
+)

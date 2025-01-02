@@ -1,0 +1,15 @@
+# Townsend function
+# From https://en.wikipedia.org/wiki/Test_functions_for_optimization#Test_functions_for_constrained_optimization
+var:
+        [-2.25, 2.5] x;
+        [-2.5, 1.75] y;
+        # [1.9, 2.1] x;
+        # [1.0, 1.2] y;
+
+ctr:
+        x^2 + y^2 < (2*cos(atan2(x, y)) - 0.5*cos(2 * atan2(x, y)) - 0.25 * cos(3 * atan2(x, y)) - 0.125 * cos(4 * atan2(x, y)))^2 + (2 * sin(atan2(x, y)))^2;
+
+cost:
+        -(cos((x - 0.1) * y))^2 - x * sin(3*x + y);
+
+# f(2.0052938,1.1944509)=-2.0239884

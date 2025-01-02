@@ -1,0 +1,106 @@
+load("//third_party/com_github_robotlocomotion_drake:tools/workspace/cpplint.bzl", "cpplint")
+load("//tools:dreal.bzl", "dreal_cc_googletest")
+
+cc_test(
+    name = "abseil_test",
+    size = "small",
+    srcs = ["abseil_test.cc"],
+    linkopts = select({
+        "@dreal//tools:linux": ["-pthread"],
+        "@//conditions:default": [],
+    }),
+    tags = ["extlib"],
+    deps = [
+        "@com_google_absl//absl/container:flat_hash_map",
+        "@com_google_absl//absl/container:flat_hash_set",
+        "@com_google_absl//absl/container:inlined_vector",
+    ],
+)
+
+dreal_cc_googletest(
+    name = "cds_test",
+    size = "small",
+    srcs = [
+        "cds_test.cc",
+    ],
+    tags = ["extlib"],
+    deps = [
+        "@cds",
+    ],
+)
+
+cc_test(
+    name = "gmp_test",
+    size = "small",
+    srcs = [
+        "gmp_test.cc",
+    ],
+    tags = ["extlib"],
+    deps = [
+        "@gmp",
+    ],
+)
+
+cc_test(
+    name = "ibex_test",
+    size = "small",
+    srcs = ["ibex_test.cc"],
+    tags = ["extlib"],
+    deps = [
+        "@ibex",
+    ],
+)
+
+dreal_cc_googletest(
+    name = "ibex_bitset_test",
+    srcs = ["ibex_bitset_test.cc"],
+    tags = ["extlib"],
+    deps = [
+        "@ibex",
+    ],
+)
+
+cc_test(
+    name = "ibex_polytope_test",
+    size = "small",
+    srcs = [
+        "ibex_polytope_test.cc",
+    ],
+    data = [
+        "DiscreteBoundary-0100.bch",
+    ],
+    tags = ["extlib"],
+    deps = [
+        "@ibex",
+    ],
+)
+
+dreal_cc_googletest(
+    name = "nlopt_test",
+    srcs = ["nlopt_test.cc"],
+    tags = ["extlib"],
+    deps = [
+        "@nlopt",
+    ],
+)
+
+dreal_cc_googletest(
+    name = "picosat_test",
+    srcs = ["picosat_test.cc"],
+    tags = ["extlib"],
+    deps = [
+        "@picosat",
+    ],
+)
+
+cc_test(
+    name = "spdlog_test",
+    size = "small",
+    srcs = ["spdlog_test.cc"],
+    tags = ["extlib"],
+    deps = [
+        "@spdlog",
+    ],
+)
+
+cpplint()

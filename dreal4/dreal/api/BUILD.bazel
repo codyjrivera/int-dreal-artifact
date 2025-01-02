@@ -1,0 +1,125 @@
+load("//third_party/com_github_robotlocomotion_drake:tools/workspace/cpplint.bzl", "cpplint")
+load("//third_party/com_github_robotlocomotion_drake:tools/workspace/python_lint.bzl", "python_lint")
+load(
+    "//tools:dreal.bzl",
+    "dreal_cc_binary",
+    "dreal_cc_googletest",
+    "dreal_cc_library",
+    "dreal_py_test",
+)
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+package(default_visibility = ["//visibility:private"])
+
+# ---------
+# Libraries
+# ---------
+dreal_cc_library(
+    name = "api",
+    srcs = [
+        "api.cc",
+    ],
+    hdrs = [
+        "api.h",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//dreal/solver",
+        "//dreal/symbolic",
+        "//dreal/util:assert",
+        "//dreal/util:box",
+        "//dreal/util:exception",
+        "//dreal/util:logging",
+        "//dreal/util:optional",
+    ],
+)
+
+# -----
+# Tests
+# -----
+dreal_cc_googletest(
+    name = "api_test",
+    tags = ["unit"],
+    deps = [
+        ":api",
+    ],
+)
+
+# dreal_py_test(
+#     name = "cav18_benchmark_with_local_opt",
+#     srcs = [
+#         "test/cav18_benchmark.py",
+#     ],
+#     args = [
+#         "--precision 0.001",
+#         "--local-optimization",
+#     ],
+#     main = "test/cav18_benchmark.py",
+#     tags = [
+#         "no_asan",
+#         "no_lsan",
+#         "no_tsan",
+#         "no_ubsan",
+#     ],
+#     deps = [
+#         "//dreal:dreal_py",
+#     ],
+# )
+
+# dreal_py_test(
+#     name = "cav18_benchmark_without_local_opt",
+#     srcs = [
+#         "test/cav18_benchmark.py",
+#     ],
+#     args = [
+#         "--precision 0.001",
+#     ],
+#     main = "test/cav18_benchmark.py",
+#     tags = [
+#         "no_asan",
+#         "no_lsan",
+#         "no_tsan",
+#         "no_ubsan",
+#     ],
+#     deps = [
+#         "//dreal:dreal_py",
+#     ],
+# )
+
+dreal_cc_binary(
+    name = "cav19_benchmark",
+    srcs = ["test/cav19_benchmark.cc"],
+    deps = [
+        ":api",
+    ],
+)
+
+# ----------------------
+# Header files to expose
+# ----------------------
+filegroup(
+    name = "headers",
+    srcs = [
+        "api.h",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+pkg_tar(
+    name = "package_headers",
+    srcs = [
+        ":headers",
+    ],
+    extension = "tar.gz",
+    package_dir = "include/dreal/api",
+    tags = ["manual"],
+    visibility = ["//visibility:public"],
+)
+
+cpplint()
+
+python_lint()
+
+licenses(["notice"])  # Apache 2.0
+
+exports_files(["LICENSE"])

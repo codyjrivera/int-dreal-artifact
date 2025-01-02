@@ -1,0 +1,152 @@
+load("//third_party/com_github_google_kythe/tools/build_rules:lexyacc.bzl", "genlex", "genyacc")
+load("//third_party/com_github_robotlocomotion_drake:tools/workspace/cpplint.bzl", "cpplint")
+load(
+    "//tools:dreal.bzl",
+    "dreal_cc_library",
+)
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+package(default_visibility = ["//visibility:private"])
+
+genyacc(
+    name = "parser",
+    src = "parser.yy",
+    extra_outs = [
+        "location.hh",
+        "position.hh",
+        "stack.hh",
+    ],
+    header_out = "parser.yy.hh",
+    source_out = "parser.yy.cc",
+)
+
+genlex(
+    name = "scanner",
+    src = "scanner.ll",
+    out = "scanner.ll.cc",
+    includes = [":parser"],
+)
+
+dreal_cc_library(
+    name = "sort",
+    srcs = [
+        "sort.cc",
+    ],
+    hdrs = [
+        "sort.h",
+    ],
+    visibility = ["//dreal/solver:__pkg__"],
+    deps = [
+        "//dreal/symbolic",
+        "//dreal/util:exception",
+    ],
+)
+
+dreal_cc_library(
+    name = "term",
+    srcs = [
+        "term.cc",
+    ],
+    hdrs = [
+        "term.h",
+    ],
+    deps = [
+        ":sort",
+        "//dreal/symbolic",
+        "//dreal/util:exception",
+    ],
+)
+
+dreal_cc_library(
+    name = "logic",
+    srcs = [
+        "logic.cc",
+    ],
+    hdrs = [
+        "logic.h",
+    ],
+    visibility = ["//dreal/solver:__pkg__"],
+    deps = [
+        "//dreal/util:exception",
+    ],
+)
+
+dreal_cc_library(
+    name = "command",
+    srcs = [
+        "command.cc",
+        "command_cell.cc",
+        "command_cell.h",
+    ],
+    hdrs = [
+        "command.h",
+    ],
+    deps = [
+        ":logic",
+        "//dreal/symbolic",
+    ],
+)
+
+dreal_cc_library(
+    name = "smt2",
+    srcs = [
+        "driver.cc",
+        "run.cc",
+        ":parser",
+        ":scanner",
+    ],
+    hdrs = [
+        "driver.h",
+        "run.h",
+        "scanner.h",
+    ],
+    visibility = [
+        "//dreal:__pkg__",
+        "//dreal/solver:__pkg__",
+    ],
+    deps = [
+        ":logic",
+        ":sort",
+        ":term",
+        "//dreal/solver",
+        "//dreal/symbolic",
+        "//dreal/symbolic:prefix_printer",
+        "//dreal/util:math",
+        "//dreal/util:precision_guard",
+        "//dreal/util:scoped_unordered_map",
+        "//dreal/util:string_to_interval",
+        "//third_party/com_github_westes_flex:flex_lexer_h",
+        "@gmp",
+    ],
+)
+
+# ----------------------
+# Header files to expose
+# ----------------------
+
+filegroup(
+    name = "headers",
+    srcs = [
+        "logic.h",
+    ],
+    visibility = [
+        "//visibility:public",
+    ],
+)
+
+pkg_tar(
+    name = "package_headers",
+    srcs = [
+        ":headers",
+    ],
+    extension = "tar.gz",
+    package_dir = "include/dreal/smt2",
+    tags = ["manual"],
+    visibility = ["//:__pkg__"],
+)
+
+cpplint()
+
+licenses(["notice"])  # Apache 2.0
+
+exports_files(["LICENSE"])

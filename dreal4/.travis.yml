@@ -1,0 +1,258 @@
+sudo: required
+dist: bionic
+language: cpp
+
+# CODECOV_TOKEN
+# Created by running `travis encrypt -r dreal/dreal4 CODECOV_TOKEN="SECURE_TOKEN_VALUE"`
+secure: "K4HzcNOd9Kzp5OhHc/bBldhaYLado14f/FT0kCUXYJBfyRt94tDMVhs1fHMwSg1PFqCFrR/DWXpDK4LDUg+fHPUuSBmx7pkrbS8Ou6y+CkeavRefX6TiOsdOseO7I9EOS5Lu5lwFX5Dik7vktLBRsFmubQ4E2kDTIGwCQ8xQzXlsv5nWUNoMTrtoG75p362EpKmLq/2IbdGQ3btQ5vjM3uT+L9CQfWJ6/IrWNzilY4KBciuZSD1PCkQ4AoxjeRH+MnRqu7IpvPEcMHcKzfN7HamIIihaWM8Xf+A2wHVypMN/jr9ONMoHSZzosMzBK38NOTyxaxAqpO0/RO0CrpjGqDjRCpT6cejndeEP4Zr1J2mnjnrsiFVZXJfQRVzvhcWa/1V0b4lK5wjPFeF/l2fwYqkwu+IMGmzVupXJ8s9L7XSZtocLeZ3dYWpUqHDI84zhb3Sts1FSfp7G8a6GshL8Mj8V795YnfVE9Y7WTlpedZ9/6aeUlgaKwbAuq1Bav2PJd435QO4thWi4ODVF9vbNjPm4ocNFQZ6YiEqbvoc2hT6E92Y309DLVGzyTLCmDm3Vkk6VVjhrvttOGXVmHFIcDvgJwvLZQ4nkw46kd8PafaEDoG4KP730qCF9CbE/SllmimTACb9cGkkCZj5O4pQEivlqc5jaoradRxht/0E0KQw="
+
+cache:
+  timeout: 6000
+  directories:
+    - $HOME/.bazel-output-base
+    - $HOME/Library/Caches/Homebrew
+
+matrix:
+  include:
+    - compiler: gcc
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          packages:
+          - g++-10
+      env:
+        - COMPILER="gcc-10" BUILD_TYPE="-c dbg"
+    - compiler: gcc
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          packages:
+          - g++-9
+      env:
+        - COMPILER="gcc-9" BUILD_TYPE="-c dbg"
+    - compiler: gcc
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          packages:
+          - g++-8
+      env:
+        - COMPILER="gcc-8" BUILD_TYPE="-c dbg"
+    - compiler: gcc
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          packages:
+          - g++-7
+      env:
+        - COMPILER="gcc-7" BUILD_TYPE="-c dbg"
+    - compiler: gcc
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          packages:
+          - g++-6
+      env:
+        - COMPILER="gcc-6" BUILD_TYPE="-c dbg"
+    - compiler: gcc
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          packages:
+          - g++-5
+      env:
+        - COMPILER="gcc-5" BUILD_TYPE="-c dbg"
+    - compiler: clang
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          - sourceline: "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-12 main"
+            key_url: "http://apt.llvm.org/llvm-snapshot.gpg.key"
+          packages:
+          - clang-12
+      env:
+        - COMPILER="clang-12" BUILD_TYPE="-c dbg"
+    - compiler: clang
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          - sourceline: "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-11 main"
+            key_url: "http://apt.llvm.org/llvm-snapshot.gpg.key"
+          packages:
+          - clang-11
+      env:
+        - COMPILER="clang-11" BUILD_TYPE="-c dbg"
+    - compiler: clang
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          - sourceline: "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main"
+            key_url: "http://apt.llvm.org/llvm-snapshot.gpg.key"
+          packages:
+          - clang-10
+      env:
+        - COMPILER="clang-10" BUILD_TYPE="-c dbg"
+    - compiler: clang
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          - sourceline: "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-9 main"
+            key_url: "http://apt.llvm.org/llvm-snapshot.gpg.key"
+          packages:
+          - clang-9
+      env:
+        - COMPILER="clang-9" BUILD_TYPE="-c dbg"
+    - compiler: clang
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          - sourceline: "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main"
+            key_url: "http://apt.llvm.org/llvm-snapshot.gpg.key"
+          packages:
+          - clang-8
+      env:
+        - COMPILER="clang-8" BUILD_TYPE="-c dbg"
+    - compiler: clang
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          - sourceline: "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main"
+            key_url: "http://apt.llvm.org/llvm-snapshot.gpg.key"
+          packages:
+          - clang-7
+      env:
+        - COMPILER="clang-7" BUILD_TYPE="-c dbg"
+    - compiler: clang
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          - sourceline: "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-6.0 main"
+            key_url: "http://apt.llvm.org/llvm-snapshot.gpg.key"
+          packages:
+          - clang-6.0
+      env:
+        - COMPILER="clang-6.0" BUILD_TYPE="-c dbg"
+    - compiler: clang
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          - sourceline: "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-5.0 main"
+            key_url: "http://apt.llvm.org/llvm-snapshot.gpg.key"
+          packages:
+          - clang-5.0
+      env:
+        - COMPILER="clang-5.0" BUILD_TYPE="-c dbg"
+    - compiler: clang
+      addons:
+        apt:
+          update: true
+          sources:
+          - sourceline: 'ppa:ubuntu-toolchain-r/test'
+          - sourceline: "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main"
+            key_url: "http://apt.llvm.org/llvm-snapshot.gpg.key"
+          packages:
+          - clang-8
+      env:
+        - COMPILER="clang-8" BUILD_TYPE="-c dbg"
+        - COV="ON" COV_OPTION="--config=kcov"
+        - TEST_TAG_FILTERS="unit"
+    - os: osx
+      osx_image: xcode11.3  # macOS-10.14
+      compiler: clang
+      env:
+        - COMPILER=clang
+        - BUILD_TYPE="-c opt"
+        - TEST_TAG_FILTERS="unit"        
+    - os: osx
+      osx_image: xcode12.2  # macOS-10.15
+      compiler: clang
+      env:
+        - COMPILER=clang
+        - BUILD_TYPE="-c opt"
+        - TEST_TAG_FILTERS="unit"
+
+before_install:
+  - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then
+      git -C "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core" fetch --unshallow;
+      git -C "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask" fetch --unshallow;
+      brew unlink python@2;
+    fi
+
+before_cache:
+  - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then brew cleanup; fi
+
+install:
+  - if [ "${TRAVIS_OS_NAME}" == "linux" ]; then
+      sudo ./setup/ubuntu/update_expired_keys.sh;
+      sudo ./setup/ubuntu/`lsb_release -r -s`/install_prereqs.sh;
+    fi
+  - if [ "${TRAVIS_OS_NAME}" == "osx" ]; then
+      ./setup/mac/install_prereqs.sh;
+    fi
+  - if [ "${COV}" == "ON" ]; then
+      sudo apt install -y binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev;
+      git clone https://github.com/SimonKagstrom/kcov --depth 1;
+      cd kcov;
+      mkdir build;
+      cd build;
+      cmake ../;
+      make -j;
+      sudo cp src/kcov /usr/bin/;
+      cd ../../;
+    fi
+
+script:
+  - export CC=${COMPILER}
+  - |
+    bazel \
+      --output_base="$HOME/.bazel-output-base" \
+      --host_jvm_args=-Xmx500m \
+      --host_jvm_args=-Xms500m \
+      test \
+      --local_ram_resources=2048 \
+      --local_cpu_resources=2 \
+      //... ${BUILD_TYPE} ${CONFIG} \
+      ${COV_OPTION} \
+      --test_output=errors \
+      --test_tag_filters=${TEST_TAG_FILTERS} \
+      --verbose_failures
+
+after_success:
+  - if [ "${TRAVIS_REPO_SLUG}" == "dreal/dreal4" ] && [ "${COV}" == "ON" ]; then
+      bash <(curl -s https://codecov.io/bash) -s bazel-kcov -t ${CODECOV_TOKEN};
+    fi
+
+notifications:
+  recipients:
+    - soonho.kong@gmail.com
+  email:
+    on_success: change
+    on_failure: always

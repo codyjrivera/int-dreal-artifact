@@ -1,0 +1,285 @@
+load("//third_party/com_github_robotlocomotion_drake:tools/workspace/cpplint.bzl", "cpplint")
+load(
+    "//tools:dreal.bzl",
+    "dreal_cc_googletest",
+    "dreal_cc_library",
+)
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+package(default_visibility = ["//visibility:private"])
+
+# ---------
+# Libraries
+# ---------
+dreal_cc_library(
+    name = "config",
+    srcs = [
+        "config.cc",
+    ],
+    hdrs = [
+        "config.h",
+    ],
+    visibility = [
+        "//dreal:__pkg__",
+        "//dreal/contractor:__pkg__",
+        "//dreal/optimization:__pkg__",
+    ],
+    deps = [
+        ":brancher",
+        "//dreal/util:box",
+        "//dreal/util:dynamic_bitset",
+        "//dreal/util:option_value",
+    ],
+)
+
+dreal_cc_library(
+    name = "brancher",
+    srcs = [
+        "brancher.cc",
+    ],
+    hdrs = [
+        "brancher.h",
+    ],
+    deps = [
+        "//dreal/util:assert",
+        "//dreal/util:box",
+        "//dreal/util:dynamic_bitset",
+        "//dreal/util:logging",
+    ],
+)
+
+dreal_cc_library(
+    name = "icp_stat",
+    srcs = [
+        "icp_stat.cc",
+    ],
+    hdrs = [
+        "icp_stat.h",
+    ],
+    deps = [
+        "//dreal/util:stat",
+        "//dreal/util:timer",
+        "@fmt",
+    ],
+)
+
+# We combine context and theory_solver in a single target because they
+# have mutual dependencies.
+dreal_cc_library(
+    name = "solver",
+    srcs = [
+        "context.cc",
+        "context_impl.cc",
+        "context_impl.h",
+        "expression_evaluator.cc",
+        "integral_expression_evaluator.cc",
+        "forall_formula_evaluator.cc",
+        "forall_formula_evaluator.h",
+        "formula_evaluator.cc",
+        "formula_evaluator_cell.cc",
+        "formula_evaluator_cell.h",
+        "icp.cc",
+        "icp_parallel.cc",
+        "icp_seq.cc",
+        "relational_formula_evaluator.cc",
+        "relational_formula_evaluator.h",
+        "theory_solver.cc",
+    ],
+    hdrs = [
+        "context.h",
+        "expression_evaluator.h",
+        "integral_expression_evaluator.h",
+        "formula_evaluator.h",
+        "icp.h",
+        "icp_parallel.h",
+        "icp_seq.h",
+        "theory_solver.h",
+    ],
+    visibility = [
+        "//:__pkg__",
+        "//dreal/api:__pkg__",
+        "//dreal/dr:__pkg__",
+        "//dreal/examples:__pkg__",
+        "//dreal/smt2:__pkg__",
+    ],
+    deps = [
+        ":brancher",
+        ":config",
+        ":filter_assertion",
+        ":icp_stat",
+        ":sat_solver",
+        "//dreal:version_header",
+        "//dreal/contractor",
+        "//dreal/smt2:logic",
+        "//dreal/smt2:sort",
+        "//dreal/symbolic",
+        "//dreal/util:assert",
+        "//dreal/util:box",
+        "//dreal/util:cds",
+        "//dreal/util:dynamic_bitset",
+        "//dreal/util:exception",
+        "//dreal/util:ibex_converter",
+        "//dreal/util:if_then_else_eliminator",
+        "//dreal/util:interrupt",
+        "//dreal/util:logging",
+        "//dreal/util:math",
+        "//dreal/util:nnfizer",
+        "//dreal/util:scoped_vector",
+        "//dreal/util:stat",
+        "//dreal/util:timer",
+        "//third_party/com_github_progschj_threadpool:thread_pool",
+        "@fmt",
+    ],
+)
+
+dreal_cc_library(
+    name = "sat_solver",
+    srcs = [
+        "sat_solver.cc",
+    ],
+    hdrs = [
+        "sat_solver.h",
+    ],
+    deps = [
+        ":config",
+        "//dreal/symbolic",
+        "//dreal/util:assert",
+        "//dreal/util:exception",
+        "//dreal/util:logging",
+        "//dreal/util:optional",
+        "//dreal/util:predicate_abstractor",
+        "//dreal/util:scoped_unordered_map",
+        "//dreal/util:scoped_unordered_set",
+        "//dreal/util:stat",
+        "//dreal/util:timer",
+        "//dreal/util:tseitin_cnfizer",
+        "@picosat",
+    ],
+)
+
+dreal_cc_library(
+    name = "filter_assertion",
+    srcs = [
+        "filter_assertion.cc",
+    ],
+    hdrs = [
+        "filter_assertion.h",
+    ],
+    visibility = ["//dreal/contractor:__pkg__"],
+    deps = [
+        "//dreal/symbolic",
+        "//dreal/util:box",
+        "//dreal/util:logging",
+    ],
+)
+
+# -----
+# Tests
+# -----
+
+dreal_cc_googletest(
+    name = "config_test",
+    tags = ["unit"],
+    deps = [
+        ":config",
+        ":solver",
+        "//dreal/api",
+        "//dreal/util:logging",
+    ],
+)
+
+dreal_cc_googletest(
+    name = "context_test",
+    tags = ["unit"],
+    deps = [
+        ":solver",
+    ],
+)
+
+dreal_cc_googletest(
+    name = "expression_evaluator_test",
+    tags = ["unit"],
+    deps = [
+        ":solver",
+    ],
+)
+
+dreal_cc_googletest(
+    name = "filter_assertion_test",
+    tags = ["unit"],
+    deps = [
+        ":filter_assertion",
+    ],
+)
+
+dreal_cc_googletest(
+    name = "formula_evaluator_test",
+    tags = ["unit"],
+    deps = [
+        ":solver",
+    ],
+)
+
+dreal_cc_googletest(
+    name = "icp_test",
+    tags = ["unit"],
+    deps = [
+        ":solver",
+    ],
+)
+
+dreal_cc_googletest(
+    name = "jorge_test",
+    tags = ["unit"],
+    deps = [
+        ":solver",
+    ],
+)
+
+dreal_cc_googletest(
+    name = "sat_solver_test",
+    tags = ["unit"],
+    deps = [
+        ":sat_solver",
+        "//dreal/util:logging",
+    ],
+)
+
+dreal_cc_googletest(
+    name = "theory_solver_test",
+    tags = ["unit"],
+    deps = [
+        ":solver",
+        "//dreal/util:logging",
+    ],
+)
+
+# ----------------------
+# Header files to expose
+# ----------------------
+filegroup(
+    name = "headers",
+    srcs = [
+        "brancher.h",
+        "config.h",
+        "context.h",
+    ],
+    visibility = ["//:__pkg__"],
+)
+
+pkg_tar(
+    name = "package_headers",
+    srcs = [
+        ":headers",
+    ],
+    extension = "tar.gz",
+    package_dir = "include/dreal/solver",
+    tags = ["manual"],
+    visibility = ["//:__pkg__"],
+)
+
+cpplint()
+
+licenses(["notice"])  # Apache 2.0
+
+exports_files(["LICENSE"])
