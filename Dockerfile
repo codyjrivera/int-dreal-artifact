@@ -53,33 +53,9 @@ RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
 
 RUN cd /home/ubuntu/int-dreal-artifact/dreal4 && bazel-5.1.0 build //...
 
-RUN cd /home/ubuntu/int-dreal-artifact/dreal-integral-experiments/ && pip3 install -r requirements.txt
+RUN cd /home/ubuntu/int-dreal-artifact/benchmarks/ && pip3 install -r requirements.txt
 
 ENV PATH="$PATH:/home/ubuntu/int-dreal-artifact/dreal4/bazel-bin/dreal/"
 # End build ∫dReal
-
-# Set up FairSquare
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Update the package list and install required dependencies, including CMake
-RUN apt-get update && \
-    apt-get install -y python3-pip nano cmake build-essential wget && \
-    rm -rf /var/lib/apt/lists/*
-
-# Set Python3 as the default Python
-RUN ln -s /usr/bin/python3 /usr/bin/python
-
-RUN pip3 install z3-solver
-
-RUN pip3 install scipy pandas
-
-RUN pip3 install codegen asteval==0.9.10 scikit-learn scipy
-
-RUN pip3 install Pillow==6.1.0 matplotlib==2.2.0
-
-RUN apt-get install python3-tk
-
-RUN apt install gnuplot-qt libxcursor1 libxrandr2
-# End set up FairSquare
 
 CMD ["/bin/bash"]

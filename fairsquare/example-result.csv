@@ -1,0 +1,5 @@
+example,output,total_time,parsing,solving
+eth_colrank_fair_00.fr,FAIR,5.46,0.02,4.72
+eth_colrank_unfair_00.fr,UNFAIR,2.82,0.02,2.06
+high_income_gender_00.fr,FAIR,1.28,0.01,0.5
+high_income_gender_unfair_00.fr,UNFAIR,1.26,0.01,0.49
