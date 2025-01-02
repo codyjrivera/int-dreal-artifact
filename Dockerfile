@@ -83,3 +83,5 @@ RUN apt install gnuplot-qt libxcursor1 libxrandr2
 # End set up FairSquare
 
 CMD ["/bin/bash"]
+
+
