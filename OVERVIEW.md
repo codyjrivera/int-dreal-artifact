@@ -91,7 +91,7 @@ To run these benchmarks, perform the following steps, starting from the
 top-level directory inside the container:
 
 1. Run `cd benchmarks`.
-2. Run `python3 getting_started_results.csv`. 
+2. Run `python3 getting_started_benchmark.py`. 
 
 The results should appear in a table at
 `benchmarks/results/getting_started_results.csv`. A sample output
@@ -123,18 +123,100 @@ Our paper describes a variety of case studies using ∫dReal, and our
 artifact contains the queries corresponding to them. We explicitly state
 this correspondance in the file `benchmarks/CASE_STUDIES.md`.
 
+We implement our benchmark suite in both ∫dReal's input language and Wolfram
+language. The former implementation can be found in `benchmarks/int-dreal`,
+while the latter implementation can be found in `benchmarks/mathematica`.
+
 ### Support for Claim 3 (performance evaluation of ∫dReal and other tools)
+The paper supports Claim 3 primarily through Table 3. Parts 1-4 will walk
+users through how to generate data on this table, and part 5 will allow users
+to evaluate the relevant algorithmic fairness benchmarks on FairSquare.
 
-#### Claim 3, Part 1 (running ∫dReal on benchmarks)
+#### Claim 3, Part 1 (running ∫dReal on benchmarks, ~1 hr)
+We start by running ∫dReal on our entire benchmark suite (minus the 
+scalability experiments).
 
-#### Claim 3, Part 2 (running Mathematica on benchmarks)
+To run these benchmarks, perform the following steps, starting from the
+top-level directory inside the container:
+
+1. Run `cd benchmarks`.
+2. Run `python3 int_dreal_benchmark.py`. 
+
+The results should appear in a table at
+`benchmarks/results/int_dreal_results.csv`. A sample output
+should appear at `benchmarks/sample-results/int_dreal_results.csv`.
+
+#### Claim 3, Part 2 (running Mathematica on benchmarks, ~40 min)
 Since Wolfram Mathematica is proprietary software, we do not include it in
 a Docker image. However, we do provide equivalent benchmarks and a
 script that can be used to run them. 
 
-#### Claim 3, Part 3 (generating Table 3)
+We intend for the Python script provided not to rely on external Python
+packages. However, users may need to modify the file `environment.py` to
+provide the proper command to run Mathematica in batch mode.
 
-#### Claim 3, Part 4 (running FairSquare on benchmarks)
+To run these benchmarks, perform the following steps, starting from the
+top-level directory:
+
+1. Run `cd benchmarks`.
+2. Run `python3 mathematica_benchmark.py`
+
+The results should appear in a table at
+`benchmarks/results/mathematica_results.csv`. A sample output
+should appear at `benchmarks/sample-results/mathematica_results.csv`.
+The sample output was derived from an author's Ubuntu 24.04 x86_64 laptop,
+running Mathematica 13.3.1, not containerized.
+
+#### Claim 3, Part 3 (getting auxiliary query information)
+Much information about our queries in Table 3 is easily derivable
+automatically. We provide a script to obtain this information.
+
+To run this script, perform the following steps, starting from the
+top-level directory inside the container:
+
+1. Run `cd benchmarks`.
+2. Run `python3 benchmark_statistics.py`. 
+
+The results should appear in a table at
+`benchmarks/results/benchmark_statistics.csv`. A sample output
+should appear at `benchmarks/sample-results/benchmark_statistics.csv`.
+
+#### Claim 3, Part 4 (generating Table 3)
+In Parts 1-3, we obtained the information necessary for constructing 
+Table 3. Here is the procedure for generating this table.
+
+The following files are needed for the process to be
+successful:
+* `benchmarks/results/benchmark_statistics.csv`
+* `benchmarks/results/int_dreal_results.csv`
+* `benchmarks/results/mathematica_results.csv`
+
+To generate the table, perform the following steps, starting from the
+top-level directory inside the container:
+
+1. Run `cd benchmarks`.
+2. Run `python3 generate_table.py`.
+
+The results should appear in a table at
+`benchmarks/results/table_3.csv`. A sample output
+should appear at `benchmarks/sample-results/table_3.csv`.
+
+When comparing `table_3.csv` and Table 3 in the paper submission, there is a
+very strong correspondence between the results. The results will not exactly
+match, since the artifact has changed since the time of the initial
+submission. 
+
+But there are a few discrepancies worth mentioning. Firstly, the
+`size` column of `svt_gauss_00` and `svt_gauss_sat_00`, showing the maximum 
+size of intervals for existentially-quantified variables, is 0.9 in the paper
+submission. The correct value is 0.4, as is the case in `table_3.csv`, and
+can be checked by looking at the appropriate file. Secondly, in Table 3 in the
+paper, ∫dReal outperforms Mathematica on `eth_colrank_fair_01`, while the 
+opposite happens in `table_3.csv`. This discrepancy does not matter, since 
+Mathematica exits without giving an answer on that benchmark. We will
+resolve these in the final version of the paper.
+
+#### Claim 3, Part 5 (running FairSquare on benchmarks)
 For a subset of our benchmarks related to algorithmic fairness, including
 `high_inc_gd_00`, `high_inc_gd_unfair_00`, `eth_colrank_fair_00`, and
 `eth_colrank_unfair_00`, we evaluate the fairness of the program from which
@@ -152,31 +234,91 @@ starting from the top-level directory and outside of a container:
    benchmarks.
 6. Run `cat result.csv` to output the results.
 
-The results corresponding to Table 3 should be in the file `result.csv`. An
+The results corresponding to Table 4 should be in the file `result.csv`. An
 example `result.csv` can be seen in the file `fairsquare/example-result.csv`
 (relative to the top-level directory of the *artifact*).
 
-### Use an Existing Docker Image
-The provided image `fairsquare-image.tar` supplies an Ubuntu 18.04 environment 
-and the software to run the benchmarks. Here are the directions to use
-this image:
-1. Install Docker Engine. See [here](https://docs.docker.com/engine/install/)
-   for instructions.
-2. Run `docker load fairsquare-image.tar` to load the extracted image into
-   Docker.
-3. To obtain an interactive shell for the container `fairsquare-image`, run
-   the following command:
-```
-docker run -it fairsquare-image /bin/bash
-```
-   (the `--mount` option allows you to copy files to the host machine).
-
-
 ### Support for Claim 4 (scalability evaluation of ∫dReal)
+In Section 7.3 of the paper submission, we evaluate the scalability of ∫dReal
+with respect to different aspects of the input. We detail how to replicate the
+experiments described in the section as well as the corresponding figures.
 
-(Brief note: each of the scaling experiments has a script that can
-be used to generate the examples, run `python3 generate.py`, with your current
-working directory *inside )
+#### Claim 4, Part 1 (scalability with respect to integral endpoints
+#### and interval width, ~50 min)
+In Figure 4, we evaluate the scalability of ∫dReal with respect to interval
+width of existentially-quantified variables, and width between integral
+endpoints. We evaluate this on three-deep and equivalent two-deep nested 
+integrals. The three-deep integral benchmarks can be seen at
+`benchmarks/scale/integral_width_triple`, and the two-deep benchmarks can be
+seen at `bencmarks/scale/integral_width_double`.
+
+To run these benchmarks, perform the following steps, starting from the
+top-level directory in the container:
+
+1. Run `cd benchmarks`.
+2. Run `python3 run_figure_4.py`
+
+The results should appear in a table at
+`benchmarks/results/figure_4_results.csv`. A sample output
+should appear at `benchmarks/sample-results/figure_4_results.csv`.
+
+To generate the corresponding figures, run the following additional
+command:
+
+3. Run `python3 gen_figure_4.py`
+
+The figure should appear as the files
+`benchmarks/results/figure-4{a, b}.png`. Sample outputs should
+appear at `benchmarks/sample-results/figure-4{a, b}.png`.
+
+#### Claim 4, Part 2 (scalability with respect to number of free vars)
+In Figure 5, we evaluate the scalability of ∫dReal with respect to the
+number of existentially-quantified variables. The benchmarks can be
+seen at `benchmarks/scale/num_variables`.
+
+To run these benchmarks, perform the following steps, starting from the
+top-level directory in the container:
+
+1. Run `cd benchmarks`.
+2. Run `python3 run_figure_5.py`
+
+The results should appear in a table at
+`benchmarks/results/figure_5_results.csv`. A sample output
+should appear at `benchmarks/sample-results/figure_5_results.csv`.
+
+To generate the corresponding figures, run the following additional
+command:
+
+3. Run `python3 gen_figure_5.py`
+
+The figure should appear as the files
+`benchmarks/results/figure-5{a, b}.png`. Sample outputs should
+appear at `benchmarks/sample-results/figure-5{a, b}.png`.
+
+#### Claim 4, Part 3 (scalability with respect to number of integral terms)
+In Figure 6, we evaluate the scalability of ∫dReal with respect to the
+number of integral terms. A version evaluating non-nested integrals can be
+seen at `benchmarks/scale/num_integrals`, and ditto with nested integrals
+at `benchmarks/scale/num_integrals_nested`.
+
+To run these benchmarks, perform the following steps, starting from the
+top-level directory in the container:
+
+1. Run `cd benchmarks`.
+2. Run `python3 run_figure_6.py`
+
+The results should appear in a table at
+`benchmarks/results/figure_6_results.csv`. A sample output
+should appear at `benchmarks/sample-results/figure_6_results.csv`.
+
+To generate the corresponding figures, run the following additional
+command:
+
+3. Run `python3 gen_figure_6.py`
+
+The figure should appear as the files
+`benchmarks/results/figure-6{a, b}.png`. Sample outputs should
+appear at `benchmarks/sample-results/figure-6{a, b}.png`.
 
 ## Reusability Guide
 The reusability of our artifact comprises the ability to write new queries
@@ -185,5 +327,5 @@ image, if used according to our instructions, provides the `dreal`
 executable in `PATH` and mounts the `benchmarks/` directory for easy file
 transfers.
 
-We describe briefly how to create new ∫dReal inputs and tweak ∫dReal's 
-options in `benchmarks/REUSE.md`.
+We outline briefly how to create new ∫dReal inputs and tweak ∫dReal's 
+options in `benchmarks/REF.md`.
