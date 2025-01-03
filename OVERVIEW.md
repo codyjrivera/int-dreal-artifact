@@ -216,7 +216,7 @@ opposite happens in `table_3.csv`. This discrepancy does not matter, since
 Mathematica exits without giving an answer on that benchmark. We will
 resolve these in the final version of the paper.
 
-#### Claim 3, Part 5 (running FairSquare on benchmarks)
+#### Claim 3, Part 5 (running FairSquare on benchmarks, ~5 min)
 For a subset of our benchmarks related to algorithmic fairness, including
 `high_inc_gd_00`, `high_inc_gd_unfair_00`, `eth_colrank_fair_00`, and
 `eth_colrank_unfair_00`, we evaluate the fairness of the program from which
@@ -271,7 +271,7 @@ The figure should appear as the files
 `benchmarks/results/figure-4{a, b}.png`. Sample outputs should
 appear at `benchmarks/sample-results/figure-4{a, b}.png`.
 
-#### Claim 4, Part 2 (scalability with respect to number of free vars)
+#### Claim 4, Part 2 (scalability with respect to number of free vars, ~10 min)
 In Figure 5, we evaluate the scalability of ∫dReal with respect to the
 number of existentially-quantified variables. The benchmarks can be
 seen at `benchmarks/scale/num_variables`.
@@ -295,7 +295,7 @@ The figure should appear as the files
 `benchmarks/results/figure-5{a, b}.png`. Sample outputs should
 appear at `benchmarks/sample-results/figure-5{a, b}.png`.
 
-#### Claim 4, Part 3 (scalability with respect to number of integral terms)
+#### Claim 4, Part 3 (scalability with respect to number of integral terms, ~10 min)
 In Figure 6, we evaluate the scalability of ∫dReal with respect to the
 number of integral terms. A version evaluating non-nested integrals can be
 seen at `benchmarks/scale/num_integrals`, and ditto with nested integrals
