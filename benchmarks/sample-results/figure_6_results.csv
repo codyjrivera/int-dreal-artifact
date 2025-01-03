@@ -1,0 +1,397 @@
+example,dreal_time,dreal_result
+num_integrals/scale_integrals_var_1,0.005505084991455078,"unsat
+"
+num_integrals/scale_integrals_var_2,0.004293362299601237,"unsat
+"
+num_integrals/scale_integrals_var_3,0.00461578369140625,"unsat
+"
+num_integrals/scale_integrals_var_4,0.007444620132446289,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_5,0.007973114649454752,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_6,0.005599101384480794,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_7,0.005546887715657552,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_8,0.005826870600382487,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_9,0.005744775136311849,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_10,0.005879402160644531,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_11,0.006251335144042969,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_12,0.0063018004099528,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_13,0.0062266190846761065,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_14,0.006222168604532878,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_15,0.006456136703491211,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_16,0.006510734558105469,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_17,0.006554047266642253,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_18,0.006708701451619466,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_19,0.007017056147257487,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_20,0.007091681162516276,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_21,0.007346709569295247,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_22,0.0071938832600911455,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_23,0.007455269495646159,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_24,0.007710774739583333,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_25,0.007747252782185872,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_26,0.00790866216023763,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_27,0.0078089237213134766,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_28,0.008315722147623697,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_29,0.00835577646891276,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_30,0.00853125254313151,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_31,0.008647839228312174,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_32,0.008953730265299479,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_33,0.00921336809794108,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_34,0.00905315081278483,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_35,0.010176817576090494,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_36,0.009543816248575846,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_37,0.009871562321980795,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_38,0.009559392929077148,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_39,0.010279496510823568,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_40,0.010623613993326822,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_41,0.010544141133626303,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_42,0.010664780934651693,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_43,0.01070110003153483,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_44,0.010938803354899088,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_45,0.010763247807820639,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_46,0.011069297790527344,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_47,0.011543194452921549,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_48,0.011702775955200195,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_49,0.011459032694498697,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_50,0.011538346608479818,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_51,0.011689503987630209,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_52,0.011572043100992838,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_53,0.011810541152954102,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_54,0.012357711791992188,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_55,0.012142022450764975,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_56,0.012635548909505209,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_57,0.01246968905131022,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_58,0.013011455535888672,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_59,0.013482888539632162,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_60,0.013406753540039062,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_61,0.01352238655090332,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_62,0.013575315475463867,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_63,0.013328472773234049,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_64,0.013792991638183594,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_65,0.013849576314290365,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_66,0.01434652010599772,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_67,0.0140380859375,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_68,0.014736096064249674,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_69,0.01486666997273763,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_70,0.015392144521077475,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_71,0.01491244633992513,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_72,0.014999151229858398,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_73,0.014966090520222982,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_74,0.015277624130249023,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_75,0.015386104583740234,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_76,0.015628337860107422,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_77,0.016437053680419922,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_78,0.016197681427001953,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_79,0.015917142232259113,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_80,0.017395655314127605,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_81,0.016756057739257812,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_82,0.016644954681396484,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_83,0.016899744669596355,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_84,0.016919374465942383,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_85,0.017286936442057293,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_86,0.018048763275146484,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_87,0.01796579360961914,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_88,0.01720571517944336,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_89,0.018139759699503582,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_90,0.018284161885579426,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_91,0.018665234247843426,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_92,0.01901531219482422,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_93,0.01930721600850423,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_94,0.018932898839314777,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_95,0.019040425618489582,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_96,0.019202550252278645,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_97,0.020908435185750324,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_98,0.02019802729288737,"delta-sat with delta = 0.00100001
+"
+num_integrals/scale_integrals_var_99,0.020486195882161457,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_1,0.0049241383870442705,"unsat
+"
+num_integrals_nested/scale_integrals_nested_var_2,0.0050487518310546875,"unsat
+"
+num_integrals_nested/scale_integrals_nested_var_3,0.005145549774169922,"unsat
+"
+num_integrals_nested/scale_integrals_nested_var_4,0.005245685577392578,"unsat
+"
+num_integrals_nested/scale_integrals_nested_var_5,0.005432605743408203,"unsat
+"
+num_integrals_nested/scale_integrals_nested_var_6,0.0389561653137207,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_7,0.01424256960550944,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_8,0.014405330022176107,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_9,0.01995849609375,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_10,0.02227020263671875,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_11,0.023952484130859375,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_12,0.025264581044514973,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_13,0.026767571767171223,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_14,0.028249343236287434,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_15,0.03171229362487793,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_16,0.03342851003011068,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_17,0.034889539082845054,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_18,0.03581873575846354,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_19,0.03853376706441244,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_20,0.04000361760457357,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_21,0.04194227854410807,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_22,0.05444598197937012,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_23,0.055170297622680664,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_24,0.0590205987294515,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_25,0.06678684552510579,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_26,0.06788984934488933,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_27,0.06924374898274739,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_28,0.06978678703308105,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_29,0.07389577229817708,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_30,0.07539963722229004,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_31,0.07971509297688802,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_32,0.0790250301361084,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_33,0.08291276295979817,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_34,0.0841207504272461,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_35,0.08830873171488444,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_36,0.08934807777404785,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_37,0.12013403574625652,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_38,0.12092630068461101,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_39,0.12243127822875977,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_40,0.13278683026631674,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_41,0.14119267463684082,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_42,0.1423341433207194,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_43,0.1460271676381429,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_44,0.15024781227111816,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_45,0.14892029762268066,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_46,0.15403238932291666,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_47,0.1613639990488688,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_48,0.16031519571940103,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_49,0.1655259132385254,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_50,0.16740949948628744,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_51,0.16603899002075195,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_52,0.17111539840698242,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_53,0.17728153864542642,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_54,0.18240086237589517,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_55,0.17978668212890625,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_56,0.18752694129943848,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_57,0.19351514180501303,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_58,0.19115392367045084,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_59,0.19813799858093262,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_60,0.2182586987813314,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_61,0.2950686613718669,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_62,0.299119234085083,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_63,0.30124330520629883,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_64,0.30350486437479657,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_65,0.3090643088022868,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_66,0.3676266670227051,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_67,0.364304780960083,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_68,0.38396477699279785,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_69,0.3865547180175781,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_70,0.3869132995605469,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_71,0.38786522547403973,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_72,0.4272034168243408,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_73,0.4490690231323242,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_74,0.4556264082590739,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_75,0.4821621576944987,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_76,0.4722415606180827,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_77,0.48744630813598633,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_78,0.48659801483154297,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_79,0.49229152997334796,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_80,0.5095201333363851,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_81,0.4943525791168213,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_82,0.5236609776814779,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_83,0.5309120019276937,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_84,0.5318533579508463,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_85,0.5483072598775228,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_86,0.5408088366190592,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_87,0.5537979602813721,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_88,0.5711252689361572,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_89,0.5817290941874186,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_90,0.5713285605112711,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_91,0.5922686258951823,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_92,0.5753533840179443,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_93,0.5922520955403646,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_94,0.5951716105143229,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_95,0.6178925832112631,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_96,0.6138916810353597,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_97,0.6238438288370768,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_98,0.6254689693450928,"delta-sat with delta = 0.00100001
+"
+num_integrals_nested/scale_integrals_nested_var_99,0.6328854560852051,"delta-sat with delta = 0.00100001
+"

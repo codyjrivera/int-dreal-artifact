@@ -1,0 +1,199 @@
+example,dreal_time,dreal_result
+num_variables/scale_vars_var_1,0.005191882451375325,"unsat
+"
+num_variables/scale_vars_var_2,0.004612048467000325,"unsat
+"
+num_variables/scale_vars_var_3,0.0050364335378011065,"unsat
+"
+num_variables/scale_vars_var_4,0.004920562108357747,"unsat
+"
+num_variables/scale_vars_var_5,0.0047838687896728516,"unsat
+"
+num_variables/scale_vars_var_6,0.005074342091878255,"unsat
+"
+num_variables/scale_vars_var_7,0.005106290181477864,"unsat
+"
+num_variables/scale_vars_var_8,0.005965709686279297,"unsat
+"
+num_variables/scale_vars_var_9,0.0056870778401692705,"unsat
+"
+num_variables/scale_vars_var_10,0.0055844783782958984,"unsat
+"
+num_variables/scale_vars_var_11,0.005783637364705403,"unsat
+"
+num_variables/scale_vars_var_12,0.005986928939819336,"unsat
+"
+num_variables/scale_vars_var_13,0.006317456563313802,"unsat
+"
+num_variables/scale_vars_var_14,0.006478071212768555,"unsat
+"
+num_variables/scale_vars_var_15,0.07460490862528484,"unsat
+"
+num_variables/scale_vars_var_16,9.138402462005615,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_17,14.331588904062906,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_18,23.11362950007121,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_19,1.5712581475575764,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_20,1.9129229386647542,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_21,0.23880966504414877,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_22,0.11701313654581706,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_23,0.09392325083414714,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_24,0.08905251820882161,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_25,0.0813302993774414,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_26,0.0699628194173177,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_27,0.06433304150899251,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_28,0.06284387906392415,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_29,0.054569641749064125,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_30,0.054006099700927734,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_31,0.05279771486918131,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_32,0.04205441474914551,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_33,0.03848799069722494,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_34,0.027682383855183918,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_35,0.01745144526163737,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_36,0.01701513926188151,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_37,0.017552773157755535,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_38,0.018399794896443684,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_39,0.019089301427205402,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_40,0.02109042803446452,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_41,0.021649758021036785,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_42,0.022192955017089844,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_43,0.022661209106445312,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_44,0.02441859245300293,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_45,0.024154822031656902,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_46,0.025020917256673176,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_47,0.024985313415527344,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_48,0.026726245880126953,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_49,0.027887503306070965,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_50,0.030815919240315754,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_51,0.02961111068725586,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_52,0.03232622146606445,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_53,0.03123315175374349,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_54,0.03282467524210612,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_55,0.03314526875813802,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_56,0.03666853904724121,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_57,0.035302162170410156,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_58,0.03661918640136719,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_59,0.03851962089538574,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_60,0.03903603553771973,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_61,0.041071176528930664,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_62,0.04187941551208496,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_63,0.044556617736816406,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_64,0.049021005630493164,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_65,0.050792535146077476,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_66,0.04763015111287435,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_67,0.05095609029134115,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_68,0.05124545097351074,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_69,0.05620900789896647,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_70,0.05316480000813802,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_71,0.060907602310180664,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_72,0.059341748555501304,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_73,0.0603642463684082,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_74,0.059729417165120445,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_75,0.06359402338663737,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_76,0.06617299715677898,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_77,0.06671102841695149,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_78,0.06594626108805339,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_79,0.07007575035095215,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_80,0.07231918970743816,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_81,0.07301847139994304,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_82,0.07837780316670735,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_83,0.0781399408976237,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_84,0.07930827140808105,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_85,0.08459663391113281,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_86,0.0859529972076416,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_87,0.0905466079711914,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_88,0.09274450937906902,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_89,0.0918436845143636,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_90,0.09475644429524739,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_91,0.09722495079040527,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_92,0.09696046511332194,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_93,0.11665527025858562,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_94,0.10228904088338216,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_95,0.10681732495625813,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_96,0.10540572802225749,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_97,0.10967302322387695,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_98,0.11815834045410156,"delta-sat with delta = 0.00100001
+"
+num_variables/scale_vars_var_99,0.11895219484965007,"delta-sat with delta = 0.00100001
+"
