@@ -15,20 +15,29 @@ int_dreal_results = {}
 mathematica_results = {}
 benchmark_statistics = {}
 
-with open('results/int_dreal_results.csv', newline='') as csvfile:
-    reader = csv.DictReader(csvfile)
-    for row in reader:
-        int_dreal_results[row['example']] = row
+try:
+    with open('results/int_dreal_results.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            int_dreal_results[row['example']] = row
+except:
+    pass
 
-with open('results/mathematica_results.csv', newline='') as csvfile:
-    reader = csv.DictReader(csvfile)
-    for row in reader:
-        mathematica_results[row['example']] = row
+try:
+    with open('results/mathematica_results.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            mathematica_results[row['example']] = row
+except:
+    pass
 
-with open('results/benchmark_statistics.csv', newline='') as csvfile:
-    reader = csv.DictReader(csvfile)
-    for row in reader:
-        benchmark_statistics[row['example']] = row
+try:
+    with open('results/benchmark_statistics.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            benchmark_statistics[row['example']] = row
+except:
+    pass
 
 with open(f'results/table_3.csv', 'w', newline='') as outfile:
     header = [
@@ -45,22 +54,35 @@ with open(f'results/table_3.csv', 'w', newline='') as outfile:
             row.update(benchmark_statistics[e])
         if e in int_dreal_results:
             res = int_dreal_results[e]
-            row['dreal_time'] = res['dreal_time']
-            row['dreal_result'] = res['dreal_result']
-            if 'delta-sat' in res['dreal_result']:
-                res['dreal_result'] = 'delta_sat' # slight simplification.
+            row['dreal_time'] = f'{float(res["dreal_time"]):.3f}'
+            row['dreal_result'] = res["dreal_result"]
+            if 'unsat' in res['dreal_result']:
+                row['dreal_result'] = 'unsat'
+            elif 'delta-sat' in res['dreal_result']:
+                row['dreal_result'] = '𝛿-sat'
+            else:
+                row['dreal_result'] = 'indeterminate'
+            
         if e in mathematica_results:
             res = mathematica_results[e]
-            row['mathematica_time'] = res['mathematica_time']
-            row['mathematica_result'] = res['mathematica_result']
+            row['mathematica_time'] = f'{float(res["mathematica_time"]):.3f}'
+            row['mathematica_result'] = res["mathematica_result"]
             r = res['mathematica_result']
-            if not ('True' in r or 'False' in r or ("{{" in r and "}}" in r and "->" in r)):
-                res['mathematica_result'] = 'indeterminate' 
+            if 'True' in r:
+                row['mathematica_result'] = 'True'
+            elif 'False' in r:
+                row['mathematica_result'] = 'False'
+            elif "{{" in r and "}}" in r and "->" in r:
+                row['mathematica_result'] = r.split('\n')[0]
+            else:
+                row['mathematica_result'] = 'indeterminate'
         
         try:
-            speedup = float(row['dreal_result']) / float(row['mathematica_result'])
+            speedup = float(row['mathematica_time']) / float(row['dreal_time'])
             if speedup < 1:
-                row['speed_factor'] = "< 1"
+                row['speed_factor'] = "<1"
+            else:
+                row['speed_factor'] = round(speedup)
         except:
             row['speed_factor'] = "N/A"
         
