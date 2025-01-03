@@ -45,9 +45,6 @@ We have tested this artifact on the following machine configuations
 - An x86-64 laptop with a 3.8 GHz AMD® Ryzen 7 Pro 7840HS processor and 32 GB 
   of RAM, running Ubuntu 24.04.
 
-Although the primary experimental laptop has 32 GB of RAM, our benchmarks
-will run in under XX GB.
-
 ## Getting Started
 We start by providing users with a Docker container with ∫dReal 
 and our benchmark suite. There are two ways of running this container: use 

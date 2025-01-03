@@ -8,7 +8,10 @@
 # Dockerfile for artifact.
 
 FROM ubuntu:22.04
-COPY . /home/ubuntu/int-dreal-artifact
+COPY ./benchmarks /home/ubuntu/int-dreal-artifact/benchmarks
+COPY ./dreal4 /home/ubuntu/int-dreal-artifact/dreal4
+COPY ./ibex-lib /home/ubuntu/int-dreal-artifact/ibex-lib
+COPY ./OVERVIEW.md /home/ubuntu/int-dreal-artifact/OVERVIEW.md
 WORKDIR /home/ubuntu/int-dreal-artifact
 RUN apt-get update
 RUN apt install apt-transport-https curl gnupg -y 
@@ -58,34 +61,4 @@ RUN cd /home/ubuntu/int-dreal-artifact/benchmarks/ && pip3 install -r requiremen
 ENV PATH="$PATH:/home/ubuntu/int-dreal-artifact/dreal4/bazel-bin/dreal/"
 # End build ∫dReal
 
-<<<<<<< HEAD
 CMD ["/bin/bash"]
-=======
-# Set up FairSquare
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Update the package list and install required dependencies, including CMake
-RUN apt-get update && \
-    apt-get install -y python3-pip nano cmake build-essential wget && \
-    rm -rf /var/lib/apt/lists/*
-
-# Set Python3 as the default Python
-RUN ln -s /usr/bin/python3 /usr/bin/python
-
-RUN pip3 install z3-solver
-
-RUN pip3 install scipy pandas
-
-RUN pip3 install codegen asteval==0.9.10 scikit-learn scipy
-
-RUN pip3 install Pillow==6.1.0 matplotlib==2.2.0
-
-RUN apt-get install python3-tk
-
-RUN apt install gnuplot-qt libxcursor1 libxrandr2
-# End set up FairSquare
-
-CMD ["/bin/bash"]
-
-
->>>>>>> 0507a6389717ff3766c0d7d1b066c25b45b1cac4
