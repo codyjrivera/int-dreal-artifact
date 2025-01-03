@@ -80,13 +80,48 @@ docker run -it --mount type=bind,src="$(pwd)/benchmarks",target=/home/ubuntu/int
 ```
    (the `--mount` option allows you to copy files to the host machine).
 
+### Run a Set of Getting Started Benchmarks (~5 min)
+In order to ensure the user's image is set up correctly, we offer a script
+that runs a subset of our benchmark suite on ∫dReal. The notable exclusions
+are `eth_colrank_unfair_01`, `svt_gauss_sat_00`, and `gauss_forall_00`.
+These benchmarks take more than 1 minute to run on the Ubuntu 24.04 laptop
+used to develop the artifact.
+
+To run these benchmarks, perform the following steps, starting from the
+top-level directory inside the container:
+
+1. Run `cd benchmarks`.
+2. Run `python3 getting_started_results.csv`. 
+
+The results should appear in a table at
+`benchmarks/results/getting_started_results.csv`. A sample output
+should appear at `benchmarks/sample-results/getting_started_results.csv`.
+
+Comparing the results in `getting_started_results.csv` with Table 3, the
+performance trends are similar.
+
 ## Step by Step Instructions
 We detail how one can use our artifact to show our paper's claims in this
 section.
 
 ### Support for Claim 1 (can add integration to 𝛿-decision procedures)
+Our artifact provides an extended implementation of dReal 4 and IBEX, the
+underlying constraint programming library, to support adding integration
+to 𝛿-decision procedures. The most relevant files in our artifact implementing
+our extensions include the following:
+
+* `dreal4/dreal/solver`:
+    - `expression_evaluator.{cc, h}`.
+    - `integral_expression_evaluator.{cc, h}`
+* `ibex-lib/src/function`:
+    - `ibex_Eval.{cpp, h}`
+    - `ibex_HC4Revise.{cpp, h}`
+    - `ibex_IntegralEval.{cpp, h}`
 
 ### Support for Claim 2 (can use ∫dReal in verification and synthesis)
+Our paper describes a variety of case studies using ∫dReal, and our
+artifact contains the queries corresponding to them. We explicitly state
+this correspondance in the file `benchmarks/CASE_STUDIES.md`.
 
 ### Support for Claim 3 (performance evaluation of ∫dReal and other tools)
 
@@ -105,8 +140,8 @@ For a subset of our benchmarks related to algorithmic fairness, including
 `eth_colrank_unfair_00`, we evaluate the fairness of the program from which
 we obtain our queries using FairSquare. The benchmarks can be seen in the 
 directory `fairsquare/dreal`. We provide a separate Docker image for running
-FairSquare benchmarks. To run these benchmarks, perform the following steps 
-(starting from the top-level directory and outside of a container):
+FairSquare benchmarks. To run these benchmarks, perform the following steps, 
+starting from the top-level directory and outside of a container:
 
 1. Run `cd fairsquare`.
 2. Run `docker load -i fairsquare-image.tar` to load the FairSquare image.
@@ -139,6 +174,9 @@ docker run -it fairsquare-image /bin/bash
 
 ### Support for Claim 4 (scalability evaluation of ∫dReal)
 
+(Brief note: each of the scaling experiments has a script that can
+be used to generate the examples, run `python3 generate.py`, with your current
+working directory *inside )
 
 ## Reusability Guide
 The reusability of our artifact comprises the ability to write new queries
