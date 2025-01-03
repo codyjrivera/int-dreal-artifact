@@ -1,0 +1,77 @@
+example,dreal_time,dreal_result
+high_inc_gd_00,0.005611737569173177,"unsat
+"
+high_inc_gd_unfair_00,0.0044125715891520185,"unsat
+"
+lap_mech_00,0.0066941579182942705,"delta-sat with delta = 0.00100001
+"
+lap_mech_00_not_pri,0.0066375732421875,"delta-sat with delta = 0.00100001
+"
+lap_mech_sat_01,0.005649884541829427,"delta-sat with delta = 0.00100001
+"
+lap_mech_sat_01_not_pri,0.006463209788004558,"unsat
+"
+gauss_mech_00_alt1,0.015613079071044922,"unsat
+"
+lap_acc_00_alt2,0.0767057736714681,"delta-sat with delta = 0.00100001
+"
+lap_acc_01,0.08908398946126302,"delta-sat with delta = 0.00100001
+"
+lap_acc_02,0.09596395492553711,"delta-sat with delta = 0.00100001
+"
+lap_acc_00_alt1,0.1436739762624105,"delta-sat with delta = 0.00100001
+"
+lap_acc_01_alt1,0.2513682047526042,"delta-sat with delta = 0.00100001
+"
+lap_acc_02_alt1,0.3630683422088623,"delta-sat with delta = 0.00100001
+"
+high_inc_gd_01,0.005137205123901367,"unsat
+"
+high_inc_gd_unfair_01,0.005021413167317708,"unsat
+"
+eth_colrank_fair_00,0.019752979278564453,"unsat
+"
+eth_colrank_unfair_00,0.025241374969482422,"unsat
+"
+vol_cmp_00,0.005173683166503906,"unsat
+"
+vol_cmp_01,0.007276137669881185,"delta-sat with delta = 0.00100001
+"
+vol_cmp_02,0.004687070846557617,"unsat
+"
+vol_cmp_03,0.006837368011474609,"delta-sat with delta = 0.00100001
+"
+vol_cmp_04,0.004649003346761067,"unsat
+"
+vol_cmp_05,0.007224162419637044,"delta-sat with delta = 0.00100001
+"
+vol_cmp_06,0.04481212298075358,"delta-sat with delta = 0.00100001
+"
+vol_cmp_07,0.021544694900512695,"delta-sat with delta = 0.00100001
+"
+vol_cmp_08,0.005179405212402344,"unsat
+"
+vol_cmp_09,0.00791319211324056,"delta-sat with delta = 0.00100001
+"
+vol_cmp_10,0.005828142166137695,"unsat
+"
+vol_cmp_11,0.008589585622151693,"delta-sat with delta = 0.00100001
+"
+gauss_mech_00,51.285749197006226,"unsat
+"
+eth_colrank_unfair_01,15.058842341105143,"unsat
+"
+svt_gauss_00,3.7811244328816733,"unsat
+"
+vol_cmp_00_forall,0.005957444508870442,"delta-sat with delta = 0.00100001
+"
+vol_cmp_02_forall,0.00589291254679362,"delta-sat with delta = 0.00100001
+"
+vol_cmp_04_forall,0.005751768747965495,"delta-sat with delta = 0.00100001
+"
+vol_cmp_06_forall,0.026325782140096027,"delta-sat with delta = 0.00100001
+"
+vol_cmp_08_forall,0.00597993532816569,"delta-sat with delta = 0.00100001
+"
+vol_cmp_10_forall,0.005714575449625651,"delta-sat with delta = 0.00100001
+"
