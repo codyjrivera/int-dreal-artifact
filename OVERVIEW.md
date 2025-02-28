@@ -2,7 +2,9 @@
 by Cody Rivera, Bishnu Bhusal, Rohit Chadha, A. Prasad Sistla,
 and Mahesh Viswanathan.
 
-Artifact by Cody Rivera and Bishnu Bhusal, Version 1.0, 2025.
+Artifact by Cody Rivera and Bishnu Bhusal, Version 2.0, 2025.
+(Revisions: Add license and clarify that the results in the final paper
+use the artifact as it stands).
 
 ## Introduction
 This is the supporting artifact for "Checking 𝛿-Satisfiability of Reals with 
@@ -202,19 +204,10 @@ The results should appear in a table at
 should appear at `benchmarks/sample-results/table_3.csv`.
 
 When comparing `table_3.csv` and Table 3 in the paper submission, there is a
-very strong correspondence between the results. The results will not exactly
-match, since the artifact has changed since the time of the initial
-submission. 
-
-But there are a few discrepancies worth mentioning. Firstly, the
-`size` column of `svt_gauss_00` and `svt_gauss_sat_00`, showing the maximum 
-size of intervals for existentially-quantified variables, is 0.9 in the paper
-submission. The correct value is 0.4, as is the case in `table_3.csv`, and
-can be checked by looking at the appropriate file. Secondly, in Table 3 in the
-paper, ∫dReal outperforms Mathematica on `eth_colrank_fair_01`, while the 
-opposite happens in `table_3.csv`. This discrepancy does not matter, since 
-Mathematica exits without giving an answer on that benchmark. We will
-resolve these in the final version of the paper.
+very strong correspondence between the results. The numbers reported in the
+paper and the numbers reported by the artifact formerly were slightly different,
+(see V1 of our artifact: https://doi.org/10.5281/zenodo.14593603), but they
+have been reconciled in the final version of the paper.
 
 #### Claim 3, Part 5 (running FairSquare on benchmarks, ~5 min)
 For a subset of our benchmarks related to algorithmic fairness, including
@@ -329,3 +322,21 @@ transfers.
 
 We outline briefly how to create new ∫dReal inputs and tweak ∫dReal's 
 options in `benchmarks/REF.md`.
+
+## Licensing
+(The full licence may be seen in `LICENSE` in the top-level directory).
+
+Copyright (C) 2025  Cody Rivera
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
