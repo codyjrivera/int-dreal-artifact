@@ -4,6 +4,13 @@ and Mahesh Viswanathan.
 
 Artifact by Cody Rivera and Bishnu Bhusal, Version 2.0, 2025.
 
+This is the supporting artifact for "Checking 𝛿-Satisfiability of Reals 
+with Integrals", a paper which extends the framework of 𝛿-decision procedures
+to handle integrals of custom real-valued functions. We provide an implementation
+of this extended decision procedure, ∫dReal. We also provide a benchmark suite 
+written in ∫dReal's input language, as well as equivalent benchmarks in Wolfram
+language or FairSquare's input language, where appropriate.
+
 Please see `OVERVIEW.md` for a comprehensive overview of the artifact.
 
 ## Licensing
